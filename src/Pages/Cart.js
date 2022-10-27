@@ -10,17 +10,15 @@ const Cart = (props) => {
                 return prevState.map(d => {
                     if (d.name === product.name) {
                         var updateQty = d.qty - 1;
-                        if (d.qty === 0) {
+                        if (d.qty === 1) {
 
-                            let v = !d === product;
+                            const newItem = prevState.filter((d) =>
+                                d.id !== product.id)
 
-                            return props.setCart(v)
+                            return props.setCart(newItem);
 
                         }
                         return { ...d, qty: updateQty }
-
-
-
                     }
                     return d;
                 })
